@@ -1,0 +1,38 @@
+{%%
+
+import locale
+locale.setlocale(locale.LC_ALL, 'fr_FR.utf-8')
+
+agenda = include('bases/agenda.yml')
+
+for year in agenda:
+
+    unsorted_dates = agenda[year]
+    sorted_dates = dict(sorted(list(unsorted_dates.items()),key= lambda x:x[0], reverse=False))
+
+
+    print('<h3>%s</h3>' % year)
+    print('<ul class="flat">')
+
+    for date in sorted_dates:
+
+        info = sorted_dates[date]
+
+        description = info['description']
+        if description == None: description = ''
+        description = description.replace('"', "'")
+
+        print('<li> %s :' % date.strftime('%x'))
+
+        if 'url' in info: print('<a href="%s">' % info['url'])
+
+        print('<span title="%s">%s</span> ' % (description, info['title']))
+
+        if 'url' in info: print('</a>')
+
+        print('</li>')
+
+
+    print('</ul>')
+
+%%}

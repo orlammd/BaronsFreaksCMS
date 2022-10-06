@@ -1,0 +1,29 @@
+{% include('templates/head.html') %}
+
+<div class="slideshow">
+
+<a href="#page1">Commencer la lecture</a>
+
+{%%
+
+
+photos = ['plagiat0000.gif', 'plagiat0010.png', 'plagiat0020.png', 'plagiat0030.png', 'plagiat0035.png', 'plagiat0040.png', 'plagiat0060.png', 'plagiat0070.png', 'plagiat0080.png', 'plagiat0090.png', 'plagiat0100.png', 'plagiat0110.png', 'plagiat0120.png', 'plagiat0130.png', 'plagiat0140.png', 'plagiat0145.png', 'plagiat0150.png', 'plagiat0160.png', 'plagiat0165.png', 'plagiat0170.png', 'plagiat0175.png', 'plagiat0180.png', 'plagiat0190.png']
+
+i = 1
+for p in photos:
+    url = 'uploads/roman-photo/' + p
+    src = image_cache(url, resize=1920)
+
+    print('<div class="item " id="page%i">' % i)
+    print('<a class="prev"  href="#page%i">&lt;</a>' % (i - 1))
+    print('<img loading="lazy" src="%s">' % src)
+    print('<a class="next"  href="#page%i">&gt;</a>' % (i + 1))
+    print('<div class="loader">Loading...</div>')
+    print('</div>')
+
+    i += 1
+
+%%}
+
+
+{% include('templates/foot.html') %}

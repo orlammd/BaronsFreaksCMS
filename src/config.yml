@@ -1,0 +1,31 @@
+meta:
+    site_title: '[plaʒia]'
+    site_description: Rap in Opposition / Le Mans
+    lang: 'fr'
+    template: templates/main.html
+
+pages:
+    home: content/home.md
+    about: content/about.md
+    clips: content/clips.md
+    dates: content/dates.md
+    links: content/links.md
+
+    bio: content/bio.md
+
+    respecte-la-puissance-papale: content/clips/clip.md
+    snapchat-au-harem: content/clips/clip.md
+    viktor-huguau-en-francafrik: content/clips/clip.md
+    agneau-gastrik: content/clips/clip.md
+    monnaie-chiffre-oseil-bif: content/clips/clip.md
+    a-la-peche-aux-moulagas: content/clips/clip.md
+
+
+navigation:
+    - home
+    - about
+    - clips
+    - dates
+    - links
+
+landing_page: home

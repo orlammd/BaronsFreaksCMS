@@ -1,0 +1,19 @@
+<header>
+    <h1 class="hidden">{% meta['site_title'] %}</h1>
+
+    <nav>
+        <ul>
+{%%
+if 'nav' in meta:
+    current_page = meta['nav']
+
+for page in navigation:
+    print("""
+            <li class="%s"><a href="%s.html">%s</a></li>
+    """ % ('on' if current_page == page else '',page, page if page != landing_page else meta['site_title']))
+%%}
+            <li class="filler"></li>
+        </ul>
+    </nav>
+
+</header>
