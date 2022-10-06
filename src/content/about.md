@@ -12,3 +12,5 @@ title: About
 ### Pour une relation tarifé·e·r avec les Plagiat Bros
 
 Au nivo du tarif des relations, dans le meilleur des cas où que t’es un parti riche, notre dot c’est 400 € + les frais de transport, ainsi on devient des travailleurs précaires. Mais nous, on t’aime même si t’as pas les moyens de nous rendre précaires, et donc si tu dois faire de nous tes travailleurs pauvres, on vient quand même, l’esclavage nous convient aussi, tant que le patron est honnête.
+
+Pour nous acheter tu commandes sur [coloscopie@plagiat.org](mailto:coloscopie@plagiat.org)
