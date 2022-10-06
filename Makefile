@@ -24,5 +24,5 @@ test:
 
 deploy:
 	@echo 'Uploading...'
-	rsync -a $(BUILD_DIR) $(shell read -p "Enter plagiat ftp user name: " x && echo $${x})@$(FTP_DOMAIN)
+	@rsync -a $(BUILD_DIR) $(shell read -p "Enter plagiat ftp user name: " x && echo $${x})@$(FTP_DOMAIN)
 	@echo 'Done'
