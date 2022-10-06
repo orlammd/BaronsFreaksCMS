@@ -1,38 +1,65 @@
 {%%
 
+import datetime
 import locale
 locale.setlocale(locale.LC_ALL, 'fr_FR.utf-8')
 
 agenda = include('bases/agenda.yml')
 
+futur = {}
+past = ''
+
+
+def format_date(date, info):
+
+    output = ''
+
+    description = info['description']
+    if description == None: description = ''
+    description = description.replace('"', "'")
+
+    output += '<li> %s :' % date.strftime('%x')
+
+    if 'url' in info: output += '<a href="%s">' % info['url']
+
+    output += '<span title="%s">%s</span> ' % (description, info['title'])
+
+    if 'url' in info: output += '</a>'
+
+    output += '</li>'
+
+    return output
+
 for year in agenda:
 
     unsorted_dates = agenda[year]
     sorted_dates = dict(sorted(list(unsorted_dates.items()),key= lambda x:x[0], reverse=False))
-
-
-    print('<h3>%s</h3>' % year)
-    print('<ul class="flat">')
+    past_count = 0
 
     for date in sorted_dates:
 
-        info = sorted_dates[date]
+        if date > datetime.date.today():
+            futur[date] = format_date(date, sorted_dates[date])
+        else:
+            past_count += 1
+            if past_count == 1:
+                past += '<h3>%s</h3>' % year
+                past += '<ul class="flat">'
 
-        description = info['description']
-        if description == None: description = ''
-        description = description.replace('"', "'")
-
-        print('<li> %s :' % date.strftime('%x'))
-
-        if 'url' in info: print('<a href="%s">' % info['url'])
-
-        print('<span title="%s">%s</span> ' % (description, info['title']))
-
-        if 'url' in info: print('</a>')
-
-        print('</li>')
+            past += format_date(date, sorted_dates[date])
 
 
+    past += '</ul>'
+
+
+
+if futur:
+    futur = dict(sorted(list(futur.items()),key= lambda x:x[0], reverse=False))
+    print('<h3>Concerts du futur</h3>')
+    print('<ul class="flat">')
+    print("".join(futur.values()))
     print('</ul>')
+
+print(past)
 
 %%}
