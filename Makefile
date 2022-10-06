@@ -20,7 +20,7 @@ list-deps:
 
 test:
 	@echo 'Opening home page in default browser...'
-	x-www-browser build/home.html
+	@x-www-browser build/home.html
 
 deploy:
 	@echo 'Uploading...'
