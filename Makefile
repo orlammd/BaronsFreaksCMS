@@ -2,7 +2,7 @@ CMS_DIR = ./cms/
 SRC_DIR = ./src/
 BUILD_DIR = ./build/
 
-DEPS = python3 python3-markdown python3-bs4 python3-yaml
+DEPS = python3 python3-markdown python3-bs4 python3-yaml python3-pil
 
 FTP_DOMAIN = ftp.ammd.net:~/static_site/
 
