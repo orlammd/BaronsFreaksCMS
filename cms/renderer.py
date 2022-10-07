@@ -10,7 +10,7 @@ import traceback
 
 
 from urllib.parse import urlparse
-from PIL import Image
+from PIL import Image, ImageSequence
 
 from .utils import *
 
@@ -281,42 +281,53 @@ class Renderer():
             cache_path += path.partition('.')[0].replace('/', '_')
 
         gif = False
+        cache_path += '-R'
+        cache_path += 'auto' if width == None else str(resize)
+
         if path.rpartition('.')[-1] == 'gif':
             cache_path += '.gif'
             gif = True
         else:
-            cache_path += '-R'
-            cache_path += 'auto' if width == None else str(resize)
             cache_path += '.jpg'
 
         if not os.path.exists(cache_path):
 
             if distant_src:
-                print('Downloading & caching distant resource: %s' % path)
+                print('Downloading distant image: %s' % path)
                 tmp = tempfile.TemporaryFile()
                 req = requests.get(path, allow_redirects=True)
                 tmp.write(req.content)
-                if gif:
-                    os.system('cp %s %s' % (tmp.path, cache_path))
-                else:
-                    src_img = Image.open(tmp)
-                    src_img.load()
+                src_img = Image.open(tmp)
+                src_img.load()
                 tmp.close()
             else:
-                print('Caching local resource: %s' % path)
-                if gif:
-                    os.system('cp %s %s' % (self.engine.paths[path], cache_path))
-                else:
-                    src_img = Image.open(self.engine.paths[path])
+                src_img = Image.open(self.engine.paths[path])
 
+            aspect_ratio = src_img.height / src_img.width
+            height = int(resize * aspect_ratio)
+
+            print('Caching resized (%sx%s) image: %s' % (resize, height, cache_path))
             if not gif:
-                aspect_ratio = src_img.height / src_img.width
-                height = int(resize * aspect_ratio)
-
                 resized_image = src_img.convert('RGB')
                 resized_image = resized_image.resize((resize, height), Image.ANTIALIAS)
-
                 resized_image.save(cache_path, optimize=True,quality=70)
+            else:
+                # https://gist.github.com/brvoisin/1ece9083b661bb67bb9d235546b1960a
+                def _thumbnail_frames(image):
+                    for frame in ImageSequence.Iterator(image):
+                        new_frame = frame.copy()
+                        new_frame.thumbnail((resize, height), Image.Resampling.LANCZOS)
+                        yield new_frame
+                frames = list(_thumbnail_frames(src_img))
+                resized_image = frames[0]
+                resized_image.save(
+                    cache_path,
+                    save_all=True,
+                    append_images=frames[1:],
+                    disposal=src_img.disposal_method,
+                    **src_img.info,
+                )
+
 
         return_path = cache_path.replace(self.engine.build_path, '')
         if return_path[0] == '/':
