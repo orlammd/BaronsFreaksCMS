@@ -20,11 +20,12 @@ def format_date(date, info):
 
     output += '<li> %s :' % date.strftime('%x')
 
-    if 'url' in info: output += '<a href="%s">' % info['url']
-
+    if 'url' in info:
+        output += '<a href="%s">' % info['url']
     output += '<span title="%s">%s</span> ' % (description, info['title'])
 
-    if 'url' in info: output += '</a>'
+    if 'url' in info:
+        output += '</a>'
 
     output += '</li>'
 

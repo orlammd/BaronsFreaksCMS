@@ -6,6 +6,8 @@ import importlib
 import os
 import requests
 import tempfile
+import traceback
+
 
 from urllib.parse import urlparse
 from PIL import Image
@@ -53,7 +55,12 @@ class Renderer():
         self.exec_context = deep_merge(self.exec_context, {
         }, update=True)
 
+
+        self.pending_include = []
+
+        self.prerendering = True
         self.prerender()
+        self.prerendering = False
 
 
 
@@ -172,8 +179,8 @@ class Renderer():
         try:
             content_string = re.sub(r'{%%(.*?)%%}\n?', exec_repl, content_string, flags=re.DOTALL)
         except Exception as e:
-            raise e
-            return 'ERROR:' + str(e)
+            if not self.prerendering:
+                self.error(e)
 
         def eval_repl(m):
             command = m.group(1)
@@ -183,10 +190,10 @@ class Renderer():
             return content
 
         try:
-            content_string = re.sub(r'{%(.*?)%}', eval_repl, content_string, flags=re.DOTALL)
+            content_string = re.sub(r'{%([^%].*?)%}', eval_repl, content_string, flags=re.DOTALL)
         except Exception as e:
-            raise e
-            return 'ERROR:' + str(e)
+            if not self.prerendering:
+                self.error(e)
 
         # purge locals to avoid variable leak
         self.locals = {}
@@ -213,7 +220,9 @@ class Renderer():
         else:
             content = self.engine.sources[path]
 
+        self.pending_include.append(path)
         content = self.resolve_code_blocks(content, **context)
+        self.pending_include.pop(-1)
 
         if path != None and '.yml' in path:
             content = yaml.safe_load(content)
@@ -227,9 +236,17 @@ class Renderer():
 
         return content
 
+    def error(self, exception):
+        if not len(self.pending_include):
+            print('Error during compilation of %s' % (self.path))
+        else:
+            print('Error during compilation of %s (template: %s)' % (self.pending_include[-1], self.path))
+        print(traceback.format_exc())
+
+
     def get(self, name, default=''):
         """
-        Get variable bynamefrom global context with a fallback default value
+        Get variable by name from global context with a fallback default value
 
         **Parameters**
 

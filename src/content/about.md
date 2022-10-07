@@ -2,7 +2,6 @@
 title: About
 ----
 
-
 ### Le roman photo du Plagiat
 
 {% include('inc/media.html', type='ebook', thumbnail=image_cache('uploads/roman-photo/plagiat0000.gif', resize=200), url='bio.html#page1', target='_blank', title='Plagiat, a real-estate story-telling rewrited & raconted by Luk') %}
