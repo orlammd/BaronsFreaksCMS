@@ -39,7 +39,7 @@ for year in agenda:
 
     for date in sorted_dates:
 
-        if date > datetime.date.today():
+        if date >= datetime.date.today():
             futur[date] = format_date(date, sorted_dates[date])
         else:
             past_count += 1
