@@ -20,6 +20,7 @@ pages:
     monnaie-chiffre-oseil-bif: content/clips/clip.md
     a-la-peche-aux-moulagas: content/clips/clip.md
 
+    anagram-checker: content/anagram.md
 
 navigation:
     - home

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Anagram Checker v1.0.1
+  </title>
+  <meta content="Rap in Opposition / Le Mans" name="description"/>
+  <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+  <style>
+      body {
+          padding-top: 50px;
+      }
+      #words span {
+          display:inline-block;
+          width: 40px;
+          height: 40px;
+          text-align:center;
+          line-height: 40px;
+          background:#d4d2a1;
+          text-transform: uppercase;
+          margin:2px;
+          font-size: 16px;
+          border-radius: 3px;
+      }
+      #words span:first-child, #words br + span {
+          margin-left: 0;
+      }
+      h3 {
+          margin-top: 20px;
+      }
+      #success {
+          background: #7fd482;
+          font-size: 16px;
+          padding: 10px;
+      }
+
+  </style>
+ </head>
+ <body>
+     <main>
+     <h1>Anagram Checker v1.0.1</h1>
+     <div id="words">
+         <div id="a"></div>
+         <h3>Versus</h3>
+         <div id="b"></div>
+     </div>
+     <h3>Result</h3>
+     <div id="result">
+         Loading...
+     </div>
+     </main>
+     <script>
+        var URL = new URL(window.location.href),
+            a = URL.searchParams.get('a'),
+            b = URL.searchParams.get('b')
+
+         var s = ''
+         for (var l of a){
+             if (l == ' ') s += '<br/>'
+             else s += '<span>' + l + '</span>'
+         }
+         document.getElementById('a').innerHTML= s
+
+         s = ''
+         for (var l of b) {
+             if (l == ' ') s += '<br/>'
+             else s += '<span>' + l + '</span>'
+         }
+         document.getElementById('b').innerHTML= s
+
+
+         var wait = 1.5
+         var result = document.getElementById('result')
+         for (let state of ['Processing lexicography...', 'Analysing data...', 'Comparing syntax trees...', 'Consolidating results...', '<div id="success">Valid anagram detected !</div>']) {
+             wait += 0.6 + Math.random() * 1.4;
+             setTimeout(()=>{
+                result.innerHTML = state
+            }, wait * 1000)
+         }
+
+     </script>
+
+ </body>
+ </html>

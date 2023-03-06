@@ -1,0 +1,3 @@
+----
+template: templates/anagram.html
+----
