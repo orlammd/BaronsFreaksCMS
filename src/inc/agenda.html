@@ -9,8 +9,9 @@ agenda = include('bases/agenda.yml')
 futur = {}
 past = ''
 
-
 def format_date(date, info):
+
+    from html import escape
 
     output = ''
 
@@ -22,7 +23,7 @@ def format_date(date, info):
 
     if 'url' in info:
         output += '<a href="%s">' % info['url']
-    output += '<span title="%s">%s</span> ' % (description, info['title'])
+    output += '<span title="%s">%s</span> ' % (escape(description), info['title'])
 
     if 'url' in info:
         output += '</a>'
