@@ -7,11 +7,16 @@
 [Peertube](https://videos.domainepublic.net/accounts/plagiatbros/videos) (toutes les vidéos du plagiat gang)
 [Bandcamp](https://plagiatbros.bandcamp.com/) (barely disque d'or)
 
+### Vamos à la plagiat
+
+C'était LA radio du Plagiat, mais on a plus le temps pour cette start-up, alors il reste juste les [podcasts](https://plagiat.org/podcasts).
+
 ### Nos gars·e·s sûr·e·s
 Hall of fame de ceusses qu’on performé au niveau du mérite
 
 [Vin Rouge](http://vinrouge.bandcamp.com/)
 [Ultra Zook](http://www.ultrazook.fr/)
+[SEC](https://seclerock.com/)
 
 [BureBureBure](https://bureburebure.info/)
 [Les Lentillères](http://lentilleres.potager.org/)
