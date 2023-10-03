@@ -24,6 +24,8 @@ for p in photos:
     i += 1
 
 %%}
-
+<script>
+if (!window.location.hash) window.location.hash = 'page1'
+</script>
 
 {% include('templates/foot.html') %}
