@@ -131,6 +131,18 @@ nav li:first-child a {
 nav .filler {
     flex: 1;
 }
+nav a[href="club-plagiat.html"] {
+    color: #dc0ea8;
+    position: relative;
+    margin-left:5px;
+}
+nav a[href="club-plagiat.html"]:before {
+    content:"☞";
+    font-size: 24px;
+    position: absolute;
+    left: -2px;
+    top: 4px;
+}
 
 
 hr {
