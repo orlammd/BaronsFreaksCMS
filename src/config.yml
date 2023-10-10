@@ -11,8 +11,8 @@ pages:
     dates: content/dates.md
     links: content/links.md
     bio: content/bio.md
-    club plagiat: content/club.md
-    club plagiat pages: content/club/*.md
+    club-plagiat: content/club.md
+    club-plagiat-pages: content/club/*.md
 
     respecte-la-puissance-papale: content/clips/clip.md
     snapchat-au-harem: content/clips/clip.md
@@ -29,6 +29,6 @@ navigation:
     - clips
     - dates
     - links
-    - club plagiat
+    - club-plagiat
 
 landing_page: home
