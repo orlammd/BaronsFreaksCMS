@@ -1,7 +1,7 @@
 {%%
 
 thumbnail = get('thumbnail', parse_peertube_url(url)['thumbnail'])
-media = include('inc/media.html', type='viceo', url=get('link', get('url')), thumbnail=image_cache(thumbnail, resize=200), title=title, target='')
+media = include('inc/media.html', type='video', url=get('link', get('url')), thumbnail=image_cache(thumbnail, resize=200), title=title, target='')
 
 print(media)
 

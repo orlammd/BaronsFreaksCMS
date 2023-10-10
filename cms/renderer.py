@@ -46,6 +46,7 @@ class Renderer():
                 'toc': '',
                 'include': lambda *a, **k: self.include(*a, **k),
                 'get': lambda *a, **k: self.get(*a, **k),
+                'get_meta': lambda *a: self.get_meta(*a),
                 'image_cache': lambda *a, **k: self.image_cache(*a, **k),
             }
         )
@@ -169,7 +170,7 @@ class Renderer():
         def exec_repl(m):
 
             def _print(*args):
-                _print._output += '\n'.join([str(a) for a in args]) + '\n'
+                _print._output += '\n'.join([str(a).strip() for a in args]) + '\n'
             _print._output = ''
 
             command = m.group(1)
@@ -235,6 +236,20 @@ class Renderer():
             self.markdown.Meta = meta
 
         return content
+
+    def get_meta(self, path):
+        if path in self.engine.sources and '.md' in path:
+            self.markdown.convert(self.engine.sources[path])
+            # reset parser to prevent duplicated footnotes
+            # while keeping metadatas...
+            meta = {}
+            for k in self.markdown.Meta:
+                meta[k] = '\n'.join(self.markdown.Meta[k])
+            # self.markdown.reset()
+            self.markdown.Meta = meta
+            return meta
+        else:
+            return {}
 
     def error(self, exception):
         if not len(self.pending_include):

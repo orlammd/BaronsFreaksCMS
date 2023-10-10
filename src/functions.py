@@ -22,4 +22,6 @@ def parse_peertube_url(url):
 
 def video_link(name):
     return include('inc/video.html', **include('bases/clips.yml')[name], link='%s.html' % name)
-    
+
+def img(src, **k):
+    return include('inc/img.html', src=src, **k)

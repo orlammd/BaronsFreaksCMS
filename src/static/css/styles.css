@@ -382,3 +382,56 @@ hr {
     transform: rotate(360deg);
   }
 }
+
+
+/* CLUB plagiat */
+.club-sandwish {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.club-loser {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: teal;
+    flex-shrink: 0;
+    text-align: center;
+    line-height: 42px;
+    font-size: 16px;
+    /* font-weight: bold; */
+    color: white;
+    cursor: default;
+}
+.club-content {
+    margin-top:4px;
+    margin-left: 8px;
+    padding:8px 10px;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.3)
+}
+
+.club-content p:last-child {
+    margin:0;
+}
+
+.club-content img {
+    border-radius: 20px;
+    margin:0;
+    display: block;
+}
+
+
+.club-content.image {
+    padding: 0;
+}
+.club-content.image p {
+    margin:0;
+}
+
+.club-content.image img {
+    border-radius: 20px;
+    border-top-left-radius: 0;
+}

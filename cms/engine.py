@@ -29,10 +29,15 @@ class Engine():
         self.sources = {}
         self.walk(self.src_path)
 
-        self.exec_context = {}
+        self.exec_context = {
+            'compiled_pages': {}
+        }
         self.config = {}
         self.init_exec_context()
 
+
+        # resolve pages in config.yml
+        pages = []
         if 'pages' in self.config:
 
             template = None
@@ -49,11 +54,18 @@ class Engine():
 
                         os.makedirs(self.build_path + page, exist_ok=True)
                         out_path = self.build_path + page + '/' + os.path.basename(p).partition('.')[0] + '.html'
-                        self.render(page, template, p.replace(self.src_path, ''), out_path)
+                        pages.append([page, template, p.replace(self.src_path, ''), out_path])
+                        self.exec_context['compiled_pages'][p.replace(self.src_path, '')] = out_path
 
                 else:
                     out_path = self.build_path + page + '.html'
-                    self.render(page, template, content_path, out_path)
+                    pages.append([page, template, content_path, out_path])
+                    self.exec_context['compiled_pages'][content_path] = out_path
+
+
+            for page in pages:
+                self.render(*page)
+
 
     def walk(self, path):
         """
