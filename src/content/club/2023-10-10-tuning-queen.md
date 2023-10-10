@@ -10,8 +10,10 @@ commentaire:
 {% img('https://plagiat.org/uploads/2023-10-21_TuningQueen.png', map='tuningqueen') %}
 
 <script>
+_=0
 function touchmytralala() {
-    alert(['Aie !', 'Ouille !', 'Ouch !', 'Eeeh oh là !', 'Aiiiiie', 'Tut tut !', 'Vroom broooooom brooooooo',  'Encore raté !', 'Encore un petit effort'][Math.round(Math.random()*10)||''])
+    alert(['Aie !', 'Ouille !', 'Ouch !', 'Eeeh oh là !', 'Aiiiiie', 'Tut tut !', 'Vroom broooooom brooooooo',  'Encore raté !', 'Encore un petit effort','T\'y est presk'][Math.round(Math.random()*9)||''])
+    _++;if(_==30)window.location.href='https://vinrouge.bandcamp.com/album/citroen-cx'
 }
 </script>
 <map name="tuningqueen">
