@@ -9,7 +9,7 @@ if 'nav' in meta:
 
 for page in navigation:
     print("""
-            <li class="%s"><a href="%s">%s</a></li>
+            <li class="%s"><a href="%s.html">%s</a></li>
     """ % ('on' if current_page == page else '',page, page if page != landing_page else meta['site_title']))
 %%}
             <li class="filler"></li>

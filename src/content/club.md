@@ -15,9 +15,9 @@ for page in compiled_pages:
         club_content = include(post)
         print(f"""
         <div class="club-sandwish" id="{title}">
-            <div class="club-loser" title="{user}" style="background:{color}">
+            <a href="#{title}" class="club-loser" title="{user}" style="background:{color}">
                 {user[0]}
-            </div>
+            </a>
             <div class="club-content {type}">
             {club_content}
             </div>
