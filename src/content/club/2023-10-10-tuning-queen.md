@@ -20,7 +20,7 @@ function touchmytralala() {
 <area shape="circle" coords="287,419,23" href="https://plagiat.org/uploads/2023-10-21_TuningQueen.png" />
 <area shape="circle" coords="710,140,43" href="https://videos.domainepublic.net/w/cXvWhc7ge9ehWc1Znv7MV4" />
 <area shape="poly" coords="268,279,499,275,505,365,277,372" href="mailto:bros@plagiat.org?subject=Bonjour les brosses à plagiat&amp;body=Salut c&apos;était pour dire salut c&apos;est quoi cette histoire de bx millezim alors c&apos;est qui alors c&apos;est quand alors c&apos;est quoi c&apos;est un concert privé hyper cool dans un lieu situé dans l&apos;hyper centre d&apos;une ville mais laquelle ? Et quand ? Je peux venir ? Aller ? Steuplait ?" />
-<area shape="poly" coords="550,398,581,391,570,384,540,391" href="https://plagiat.org/anagram-checker?a=Plagiat%20Bros&amp;b=Johan%20Papaconstantino" />
+<area shape="poly" coords="550,398,581,391,570,384,540,391" href="https://plagiat.org/uploads/sarkolivre.png" />
 <area shape="poly" coords="46,272,132,300,134,341,51,310,46,291" href="http://anthurus.free.fr/web/lab/lab158.html" />
 <area shape="circle" coords="153,326,8" href="javascript:touchmytralala()" />
 </map>
