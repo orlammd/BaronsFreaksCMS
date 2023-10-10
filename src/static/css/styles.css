@@ -430,6 +430,9 @@ hr {
 .club-content.image p {
     margin:0;
 }
+.club-content.image br {
+    display: none;
+}
 
 .club-content.image img {
     border-radius: 20px;

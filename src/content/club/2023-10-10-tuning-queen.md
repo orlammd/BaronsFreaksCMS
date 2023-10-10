@@ -7,5 +7,6 @@ commentaire:
     color: couleur de l'avatar
     type: si image, ne pas mettre de texte dans le contenu (retire les marges)
 ----
-
+<a href="https://plagiat.org/uploads/2023-10-21_TuningQueen.png">
 {% img('https://plagiat.org/uploads/2023-10-21_TuningQueen.png') %}
+</a>
