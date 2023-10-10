@@ -8,9 +8,15 @@ FTP_DOMAIN = ftp.ammd.net:~/
 
 .PHONY: all
 
+
 all:
 	@echo 'Building site...'
 	@python3 $(CMS_DIR) $(SRC_DIR) $(BUILD_DIR)
+	@echo 'Syncing static assets...'
+	@rsync -a $(SRC_DIR)/static/ $(BUILD_DIR)
+	@echo 'Done'
+
+assets:
 	@echo 'Syncing static assets...'
 	@rsync -a $(SRC_DIR)/static/ $(BUILD_DIR)
 	@echo 'Done'
