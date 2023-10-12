@@ -10,11 +10,12 @@ FTP_DOMAIN = ftp.ammd.net:~/
 
 
 all:
+	@make --no-print-directory site
+	@make --no-print-directory assets
+
+site:
 	@echo 'Building site...'
 	@python3 $(CMS_DIR) $(SRC_DIR) $(BUILD_DIR)
-	@echo 'Syncing static assets...'
-	@rsync -a $(SRC_DIR)/static/ $(BUILD_DIR)
-	@echo 'Done'
 
 assets:
 	@echo 'Syncing static assets...'
@@ -23,6 +24,9 @@ assets:
 
 list-deps:
 	@echo $(DEPS)
+
+watch:
+	@python3 -m pyinotify -c make -r -e IN_CREATE,IN_DELETE,IN_MODIFY $(SRC_DIR)
 
 test:
 	@echo 'Opening home page in default browser...'
